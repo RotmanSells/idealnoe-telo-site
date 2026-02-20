@@ -390,6 +390,33 @@ header[id] {
     border-color: var(--floating-secondary-border);
 }
 
+.floating-btn-theme {
+    background: #ffffff;
+    color: #475569;
+    border-color: #c5a880;
+    animation: themeBlink 2.2s ease-in-out infinite;
+}
+
+.floating-btn-theme:hover {
+    animation-play-state: paused;
+}
+
+[data-theme='dark'] .floating-btn-theme {
+    background: #c5a880;
+    color: #111827;
+}
+
+@keyframes themeBlink {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.78;
+        transform: scale(0.96);
+    }
+}
+
 .map-embed {
     filter: var(--map-filter);
 }
@@ -529,5 +556,11 @@ header[id] {
 
     .floating-actions {
         display: flex;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .floating-btn-theme {
+        animation: none;
     }
 }

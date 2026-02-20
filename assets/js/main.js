@@ -66,6 +66,26 @@
         });
     }
 
+    function syncThemeFab(theme) {
+        var fab = document.querySelector('[data-theme-fab]');
+        if (!fab) {
+            return;
+        }
+
+        var icon = fab.querySelector('i');
+        if (!icon) {
+            return;
+        }
+
+        if (theme === 'dark') {
+            icon.className = 'fa-solid fa-sun';
+            fab.setAttribute('aria-label', 'Включить светлую тему');
+        } else {
+            icon.className = 'fa-solid fa-moon';
+            fab.setAttribute('aria-label', 'Включить темную тему');
+        }
+    }
+
     function setTheme(theme) {
         var resolvedTheme = theme === 'dark' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', resolvedTheme);
@@ -77,19 +97,21 @@
         }
     }
 
+    function toggleTheme() {
+        applyTheme(getCurrentTheme() === 'dark' ? 'light' : 'dark');
+    }
+
     function applyTheme(theme) {
         var resolvedTheme = theme === 'dark' ? 'dark' : 'light';
         setTheme(resolvedTheme);
         syncThemeToggles(resolvedTheme);
+        syncThemeFab(resolvedTheme);
         updateNavState();
     }
 
     function initThemeToggle() {
         var themeToggles = document.querySelectorAll('[data-theme-toggle]');
-
-        if (!themeToggles.length) {
-            return;
-        }
+        var themeFab = document.querySelector('[data-theme-fab]');
 
         applyTheme(getCurrentTheme());
 
@@ -98,6 +120,10 @@
                 applyTheme(toggle.checked ? 'dark' : 'light');
             });
         });
+
+        if (themeFab) {
+            themeFab.addEventListener('click', toggleTheme);
+        }
     }
 
     function escapeHtml(value) {
