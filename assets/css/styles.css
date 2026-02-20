@@ -105,12 +105,6 @@ header[id] {
     background: rgba(17, 17, 17, 0.55);
 }
 
-.hero-panel {
-    border: 1px solid rgba(197, 168, 128, 0.22);
-    background: linear-gradient(160deg, rgba(32, 32, 32, 0.85), rgba(16, 16, 16, 0.93));
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
-}
-
 .about-card {
     display: flex;
     flex-direction: column;
@@ -149,54 +143,6 @@ header[id] {
     opacity: 0.85;
 }
 
-.quick-row {
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    gap: 0.75rem;
-    color: #e5e7eb;
-    line-height: 1.45;
-}
-
-.quick-row a {
-    color: #f3f4f6;
-    transition: color 0.25s ease;
-}
-
-.quick-row a:hover {
-    color: #c5a880;
-}
-
-.quick-action-btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.78rem 1rem;
-    border-radius: 999px;
-    border: 1px solid #c5a880;
-    background: #c5a880;
-    color: #0a0a0a;
-    font-weight: 600;
-    transition: all 0.25s ease;
-}
-
-.quick-action-btn:hover {
-    background: #e6cba8;
-    border-color: #e6cba8;
-}
-
-.quick-action-secondary {
-    background: transparent;
-    color: #e5e7eb;
-    border-color: rgba(107, 114, 128, 0.75);
-}
-
-.quick-action-secondary:hover {
-    color: #c5a880;
-    border-color: #c5a880;
-    background: rgba(31, 31, 31, 0.9);
-}
-
 .services-toolbar {
     backdrop-filter: blur(14px);
 }
@@ -230,7 +176,6 @@ header[id] {
 
 .category-chip:focus-visible,
 .floating-btn:focus-visible,
-.quick-action-btn:focus-visible,
 .mobile-nav-link:focus-visible,
 .mobile-call-btn:focus-visible {
     outline: 2px solid #c5a880;
