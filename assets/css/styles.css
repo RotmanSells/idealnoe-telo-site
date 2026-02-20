@@ -6,7 +6,6 @@
     --surface-border: rgba(197, 168, 128, 0.1);
     --nav-bg: rgba(10, 10, 10, 0.8);
     --nav-bg-scrolled: rgba(10, 10, 10, 0.95);
-    --mobile-menu-bg: rgba(10, 10, 10, 0.92);
     --hero-overlay-start: rgba(10, 10, 10, 0.9);
     --hero-overlay-end: rgba(10, 10, 10, 0.52);
     --hero-badge-bg: rgba(17, 17, 17, 0.55);
@@ -61,14 +60,8 @@ footer {
     top: 12px;
 }
 
-.promo-banner {
-    position: relative;
-    z-index: 20;
-    padding: 0.8rem 0 0.7rem;
-    border-bottom: 1px solid rgba(197, 168, 128, 0.2);
-    background:
-        radial-gradient(circle at 15% -10%, rgba(197, 168, 128, 0.22) 0%, rgba(197, 168, 128, 0) 46%),
-        linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.92) 100%);
+.hero-promo-wrap {
+    max-width: 780px;
 }
 
 .promo-banner-inner {
@@ -152,44 +145,6 @@ footer {
 
 .glass-nav.is-scrolled {
     background: var(--nav-bg-scrolled);
-}
-
-.mobile-menu {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    background: var(--mobile-menu-bg);
-    backdrop-filter: blur(12px);
-}
-
-.mobile-menu-panel {
-    border: 1px solid var(--surface-border);
-    background: var(--surface);
-}
-
-.mobile-nav-link {
-    color: #e5e7eb;
-    font-weight: 500;
-    font-size: 1rem;
-    border: 1px solid rgba(75, 85, 99, 0.55);
-    border-radius: 0.75rem;
-    padding: 0.75rem 1rem;
-    transition: all 0.25s ease;
-}
-
-.mobile-nav-link:hover {
-    border-color: #c5a880;
-    color: #c5a880;
-}
-
-.mobile-call-btn {
-    margin-top: 0.25rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    padding: 0.9rem 1rem;
-    font-weight: 600;
-    color: #0a0a0a;
-    background: #c5a880;
 }
 
 .glass-card {
@@ -292,9 +247,7 @@ footer {
 }
 
 .category-chip:focus-visible,
-.floating-btn:focus-visible,
-.mobile-nav-link:focus-visible,
-.mobile-call-btn:focus-visible {
+.floating-btn:focus-visible {
     outline: 2px solid #c5a880;
     outline-offset: 2px;
 }
@@ -398,6 +351,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .hero-promo-wrap {
+        margin-top: 2rem;
+    }
+
     .promo-title {
         font-size: 0.7rem;
         margin-bottom: 0.45rem;
