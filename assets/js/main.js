@@ -2,7 +2,6 @@
     var state = {
         activeCategory: 'all'
     };
-    var lastThemeToggleAt = 0;
 
     function setTextByDataAttr(attr, value) {
         if (!value) {
@@ -38,122 +37,6 @@
         document.querySelectorAll('[data-business-telegram-link]').forEach(function (element) {
             element.setAttribute('href', telegramUrl);
         });
-    }
-
-    function getStoredTheme() {
-        try {
-            var saved = localStorage.getItem('site-theme');
-            if (saved === 'light' || saved === 'dark') {
-                return saved;
-            }
-        } catch (error) {
-            return 'light';
-        }
-
-        return 'light';
-    }
-
-    function getCurrentTheme() {
-        var attrTheme = document.documentElement.getAttribute('data-theme');
-        if (attrTheme === 'light' || attrTheme === 'dark') {
-            return attrTheme;
-        }
-        return getStoredTheme();
-    }
-
-    function syncThemeToggles(theme) {
-        document.querySelectorAll('[data-theme-toggle]').forEach(function (toggle) {
-            toggle.checked = theme === 'dark';
-        });
-    }
-
-    function syncThemeFab(theme) {
-        var fab = document.querySelector('[data-theme-fab]');
-        if (!fab) {
-            return;
-        }
-
-        var icon = fab.querySelector('i');
-        if (!icon) {
-            return;
-        }
-
-        if (theme === 'dark') {
-            icon.className = 'fa-solid fa-sun';
-            fab.setAttribute('aria-label', 'Включить светлую тему');
-        } else {
-            icon.className = 'fa-solid fa-moon';
-            fab.setAttribute('aria-label', 'Включить темную тему');
-        }
-    }
-
-    function setTheme(theme) {
-        var resolvedTheme = theme === 'dark' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', resolvedTheme);
-
-        try {
-            localStorage.setItem('site-theme', resolvedTheme);
-        } catch (error) {
-            return;
-        }
-    }
-
-    function toggleTheme() {
-        applyTheme(getCurrentTheme() === 'dark' ? 'light' : 'dark');
-    }
-
-    function triggerThemeToggle() {
-        var now = Date.now();
-        if (now - lastThemeToggleAt < 250) {
-            return;
-        }
-        lastThemeToggleAt = now;
-        toggleTheme();
-    }
-
-    function applyTheme(theme) {
-        var resolvedTheme = theme === 'dark' ? 'dark' : 'light';
-        setTheme(resolvedTheme);
-        syncThemeToggles(resolvedTheme);
-        syncThemeFab(resolvedTheme);
-        updateNavState();
-    }
-
-    function initThemeToggle() {
-        var themeToggles = document.querySelectorAll('[data-theme-toggle]');
-        var themeFab = document.querySelector('[data-theme-fab]');
-
-        applyTheme(getCurrentTheme());
-
-        themeToggles.forEach(function (toggle) {
-            toggle.addEventListener('input', function () {
-                applyTheme(toggle.checked ? 'dark' : 'light');
-            });
-        });
-
-        if (themeFab) {
-            themeFab.addEventListener('click', function (event) {
-                event.preventDefault();
-                triggerThemeToggle();
-            });
-
-            themeFab.addEventListener('touchend', function (event) {
-                event.preventDefault();
-                triggerThemeToggle();
-            }, { passive: false });
-
-            themeFab.addEventListener('pointerup', function (event) {
-                event.preventDefault();
-                triggerThemeToggle();
-            });
-
-            themeFab.addEventListener('keydown', function (event) {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    triggerThemeToggle();
-                }
-            });
-        }
     }
 
     function escapeHtml(value) {
@@ -421,7 +304,6 @@
             document.title = business.name + ' | ' + business.category + ' в Краснодаре';
         }
 
-        initThemeToggle();
         initScrollEffects();
         initMobileMenu();
         initServicesFilters(categories);
