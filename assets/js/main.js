@@ -2,6 +2,7 @@
     var state = {
         activeCategory: 'all'
     };
+    var lastThemeToggleAt = 0;
 
     function setTextByDataAttr(attr, value) {
         if (!value) {
@@ -101,6 +102,15 @@
         applyTheme(getCurrentTheme() === 'dark' ? 'light' : 'dark');
     }
 
+    function triggerThemeToggle() {
+        var now = Date.now();
+        if (now - lastThemeToggleAt < 250) {
+            return;
+        }
+        lastThemeToggleAt = now;
+        toggleTheme();
+    }
+
     function applyTheme(theme) {
         var resolvedTheme = theme === 'dark' ? 'dark' : 'light';
         setTheme(resolvedTheme);
@@ -122,15 +132,25 @@
         });
 
         if (themeFab) {
+            themeFab.addEventListener('click', function (event) {
+                event.preventDefault();
+                triggerThemeToggle();
+            });
+
+            themeFab.addEventListener('touchend', function (event) {
+                event.preventDefault();
+                triggerThemeToggle();
+            }, { passive: false });
+
             themeFab.addEventListener('pointerup', function (event) {
                 event.preventDefault();
-                toggleTheme();
+                triggerThemeToggle();
             });
 
             themeFab.addEventListener('keydown', function (event) {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
-                    toggleTheme();
+                    triggerThemeToggle();
                 }
             });
         }
@@ -265,9 +285,6 @@
 
         updateServicesSummary(filtered);
 
-        if (window.AOS && hasItems) {
-            window.AOS.refreshHard();
-        }
     }
 
     function renderCategoryChips(categories) {
@@ -388,16 +405,6 @@
         updateNavState();
     }
 
-    function initAnimations() {
-        if (window.AOS) {
-            window.AOS.init({
-                once: true,
-                offset: 100,
-                duration: 800
-            });
-        }
-    }
-
     function initPage() {
         var business = window.BUSINESS_INFO || {};
         var categories = window.SERVICE_CATEGORIES || [];
@@ -415,7 +422,6 @@
         }
 
         initThemeToggle();
-        initAnimations();
         initScrollEffects();
         initMobileMenu();
         initServicesFilters(categories);

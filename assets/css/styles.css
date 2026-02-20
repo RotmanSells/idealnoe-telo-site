@@ -1,5 +1,4 @@
 :root {
-    --promo-height: 44px;
     --page-bg: #f4f6fb;
     --text-main: #0f172a;
     --surface: rgba(255, 255, 255, 0.86);
@@ -59,11 +58,21 @@ body {
     background-color: var(--page-bg);
     color: var(--text-main);
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 section[id],
 header[id] {
     scroll-margin-top: 24px;
+}
+
+#about,
+#services,
+#contacts,
+footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
 }
 
 .skip-link {
@@ -85,65 +94,75 @@ header[id] {
 .promo-banner {
     position: relative;
     z-index: 20;
-    height: var(--promo-height);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
     background: linear-gradient(95deg, #fff8ec 0%, #fff3de 45%, #fef8ee 100%);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.12);
 }
 
 [data-theme='dark'] .promo-banner {
     border-bottom-color: rgba(197, 168, 128, 0.25);
     background: linear-gradient(95deg, rgba(35, 28, 18, 0.98) 0%, rgba(52, 36, 20, 0.95) 45%, rgba(29, 24, 18, 0.98) 100%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 .promo-banner-inner {
-    height: var(--promo-height);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.85rem;
-    white-space: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
+    padding: 0.75rem 0;
 }
 
-.promo-banner-inner::-webkit-scrollbar {
-    display: none;
-}
-
-.promo-item {
+.promo-title {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    color: #1f2937;
-    font-size: 0.74rem;
-    letter-spacing: 0.02em;
-    text-transform: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9b6b30;
+    margin-bottom: 0.55rem;
     font-weight: 600;
 }
 
-[data-theme='dark'] .promo-item {
-    color: #e5e7eb;
+.promo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
 }
 
-.promo-item i {
-    color: #c5a880;
+.promo-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.8rem;
+    border: 1px solid rgba(155, 107, 48, 0.26);
+    background: rgba(255, 255, 255, 0.66);
+    padding: 0.55rem 0.75rem;
 }
 
-.promo-item strong {
+[data-theme='dark'] .promo-card {
+    border-color: rgba(230, 203, 168, 0.3);
+    background: rgba(24, 24, 24, 0.6);
+}
+
+.promo-label {
+    font-size: 0.8rem;
+    color: #334155;
+    line-height: 1.2;
+}
+
+[data-theme='dark'] .promo-label {
+    color: #d1d5db;
+}
+
+.promo-value {
     color: #9b6b30;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
 }
 
-[data-theme='dark'] .promo-item strong {
+[data-theme='dark'] .promo-title,
+[data-theme='dark'] .promo-value {
     color: #e6cba8;
-}
-
-.promo-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 999px;
-    background: #c5a880;
-    opacity: 0.9;
 }
 
 .glass-nav {
@@ -283,7 +302,7 @@ header[id] {
 .hero-bg {
     background: linear-gradient(to right, var(--hero-overlay-start) 0%, var(--hero-overlay-end) 100%),
         url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll;
 }
 
 .hero-badge {
@@ -603,13 +622,28 @@ header[id] {
     color: #9ca3af !important;
 }
 
-@media (max-width: 1024px) {
-    .hero-bg {
-        background-attachment: scroll;
-    }
-}
-
 @media (max-width: 768px) {
+    .promo-title {
+        font-size: 0.72rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .promo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .promo-card {
+        padding: 0.52rem 0.7rem;
+    }
+
+    .promo-label {
+        font-size: 0.75rem;
+    }
+
+    .promo-value {
+        font-size: 0.92rem;
+    }
+
     .theme-toggle {
         margin-right: 0.5rem;
     }
@@ -629,9 +663,5 @@ header[id] {
 
     .floating-actions {
         display: flex;
-    }
-
-    .promo-banner-inner {
-        justify-content: flex-start;
     }
 }
