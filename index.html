@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Идеальное тело | Салон красоты в Краснодаре</title>
+    <meta name="description" content="Идеальное тело — салон красоты в Краснодаре: аппаратные массажи, лазерная эпиляция, солярий. Актуальные цены и запись по телефону.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#E6CBA8',
+                            DEFAULT: '#C5A880',
+                            dark: '#A38760'
+                        },
+                        dark: {
+                            900: '#0a0a0a',
+                            800: '#141414',
+                            700: '#1f1f1f'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="antialiased font-sans">
+    <a href="#services" class="skip-link">Перейти к прайсу</a>
+
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300" aria-label="Главное меню">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <a href="#" class="flex-shrink-0 flex items-center" aria-label="На главную">
+                    <span class="font-serif text-3xl font-semibold tracking-wider text-white">
+                        <span data-business-name>Идеальное тело</span>
+                    </span>
+                </a>
+
+                <div class="hidden md:flex space-x-10 items-center">
+                    <a href="#about" class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand transition duration-300">О салоне</a>
+                    <a href="#services" class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand transition duration-300">Услуги и цены</a>
+                    <a href="#contacts" class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand transition duration-300">Контакты</a>
+                    <a data-business-telegram-link href="https://t.me/ivleva_lazer" target="_blank" rel="noopener" class="text-sm uppercase tracking-widest text-gray-200 hover:text-brand transition duration-300">
+                        Написать
+                    </a>
+                    <a data-business-phone-link href="tel:+79649002011" class="font-medium text-lg text-white border border-brand px-6 py-2 rounded-full hover:bg-brand hover:text-dark-900 transition duration-300">
+                        <span data-business-phone>+7 (964) 900-20-11</span>
+                    </a>
+                </div>
+
+                <button id="mobile-menu-toggle" class="md:hidden w-11 h-11 rounded-full border border-gray-600 text-gray-200 hover:border-brand hover:text-brand transition" aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu md:hidden" hidden>
+            <div class="max-w-7xl mx-auto px-4 pb-6">
+                <div class="mobile-menu-panel rounded-2xl p-6 flex flex-col gap-4">
+                    <a href="#about" class="mobile-nav-link">О салоне</a>
+                    <a href="#services" class="mobile-nav-link">Услуги и цены</a>
+                    <a href="#contacts" class="mobile-nav-link">Контакты</a>
+                    <a data-business-telegram-link href="https://t.me/ivleva_lazer" target="_blank" rel="noopener" class="mobile-nav-link">
+                        <i class="fa-brands fa-telegram mr-2"></i>Написать
+                    </a>
+                    <a data-business-phone-link href="tel:+79649002011" class="mobile-call-btn">
+                        <i class="fa-solid fa-phone mr-2"></i><span data-business-phone>+7 (964) 900-20-11</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg min-h-screen flex items-center pt-28 md:pt-24 relative overflow-hidden">
+        <div class="absolute top-1/4 -left-64 w-96 h-96 bg-brand rounded-full mix-blend-screen filter blur-[128px] opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+                <div class="lg:col-span-7" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="h-[1px] w-12 bg-brand"></div>
+                        <span class="text-brand tracking-[0.2em] uppercase text-xs font-semibold" data-business-category>Салон красоты</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-serif mb-8 leading-tight text-white">
+                        <span data-business-name>Идеальное тело</span><br>
+                        эстетика и уход
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-300 mb-10 font-light max-w-xl leading-relaxed">
+                        Аппаратные массажи, лазерная эпиляция и солярий в Краснодаре.
+                        Удобная запись, понятный прайс и комфортный сервис.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 mb-12">
+                        <span class="hero-badge">
+                            <i class="fa-solid fa-star text-brand mr-2"></i>
+                            <span data-business-rating>⭐ 5,0</span>
+                        </span>
+                        <span class="hero-badge">
+                            <i class="fa-solid fa-clock text-brand mr-2"></i>
+                            <span data-business-hours>Открыто с 10:00 до 22:00</span>
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a data-business-telegram-link href="https://t.me/ivleva_lazer" target="_blank" rel="noopener" class="bg-brand glow-btn text-dark-900 px-8 py-4 rounded-full font-semibold text-center uppercase tracking-wider text-sm hover:bg-brand-light transition duration-300">
+                            Написать
+                        </a>
+                        <a href="#services" class="bg-transparent text-white px-8 py-4 rounded-full font-medium text-center border border-gray-600 hover:border-brand hover:text-brand transition duration-300">
+                            Смотреть прайс
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="lg:col-span-5" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="hero-panel rounded-3xl p-8">
+                        <h2 class="text-2xl font-serif mb-6 text-white">Быстрый доступ</h2>
+                        <div class="space-y-5">
+                            <div class="quick-row">
+                                <i class="fa-solid fa-location-dot text-brand"></i>
+                                <span data-business-address>ул. Ивана Беличенко, 95, корп. 1, Краснодар</span>
+                            </div>
+                            <div class="quick-row">
+                                <i class="fa-solid fa-phone text-brand"></i>
+                                <a data-business-phone-link href="tel:+79649002011"><span data-business-phone>+7 (964) 900-20-11</span></a>
+                            </div>
+                            <div class="quick-row">
+                                <i class="fa-solid fa-clock text-brand"></i>
+                                <span data-business-hours>Открыто с 10:00 до 22:00</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <a data-business-phone-link href="tel:+79649002011" class="quick-action-btn">
+                                <i class="fa-solid fa-phone"></i>
+                                Позвонить
+                            </a>
+                            <a data-business-telegram-link href="https://t.me/ivleva_lazer" target="_blank" rel="noopener" class="quick-action-btn quick-action-secondary">
+                                <i class="fa-brands fa-telegram"></i>
+                                Написать
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-24 bg-dark-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-serif mb-4">О салоне</h2>
+                <div class="w-24 h-[1px] bg-brand mx-auto mb-6"></div>
+                <p class="text-gray-400 font-light tracking-wide uppercase text-sm">Актуальная информация</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card about-card rounded-2xl p-6 md:p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 rounded-full bg-dark-700 flex items-center justify-center border border-gray-700 mb-4">
+                        <i class="fa-solid fa-crown text-brand text-xl"></i>
+                    </div>
+                    <p class="text-sm text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-gem text-brand"></i>
+                        Фишка салона
+                    </p>
+                    <p class="text-xl text-white font-light">Body Upgrade Space</p>
+                    <p class="text-sm text-gray-400 mt-3">Технологии коррекции фигуры и эстетичный сервис в одном месте.</p>
+                    <div class="about-tags mt-4">
+                        <span class="about-tag">Аппаратные методики</span>
+                        <span class="about-tag">Безоперационные процедуры</span>
+                        <span class="about-tag">Комфортный формат</span>
+                    </div>
+                </div>
+
+                <div class="glass-card about-card rounded-2xl p-6 md:p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 rounded-full bg-dark-700 flex items-center justify-center border border-gray-700 mb-4">
+                        <i class="fa-solid fa-location-dot text-brand"></i>
+                    </div>
+                    <p class="text-sm text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-brand"></i>
+                        Адрес
+                    </p>
+                    <p class="text-xl text-white font-light" data-business-address>ул. Ивана Беличенко, 95, корп. 1, Краснодар</p>
+                    <p class="text-sm text-gray-400 mt-3">Удобный подъезд, можно быстро построить маршрут.</p>
+                    <a href="https://yandex.ru/maps/?text=ул.%20Ивана%20Беличенко%2C%2095%2C%20корп.%201%2C%20Краснодар" target="_blank" rel="noopener" class="about-link mt-auto">
+                        Открыть маршрут
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <div class="glass-card about-card rounded-2xl p-6 md:p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 rounded-full bg-dark-700 flex items-center justify-center border border-gray-700 mb-4">
+                        <i class="fa-solid fa-award text-brand"></i>
+                    </div>
+                    <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Рейтинг</p>
+                    <p class="text-xl text-white font-light" data-business-rating>⭐ 5,0</p>
+                    <p class="text-sm text-gray-400 mt-3">Клиенты отмечают аккуратность, комфорт и внимательный подход.</p>
+                    <div class="about-tags mt-auto">
+                        <span class="about-tag">Высокая оценка</span>
+                        <span class="about-tag">Рекомендации клиентов</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-14" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-serif mb-4">Услуги и цены</h2>
+                <div class="w-24 h-[1px] bg-brand mx-auto mb-6"></div>
+                <p class="text-gray-400 font-light tracking-wide uppercase text-sm">Актуальный прайс</p>
+            </div>
+
+            <div class="services-toolbar glass-card rounded-2xl p-5 md:p-6 mb-10" data-aos="fade-up">
+                <div class="flex items-center justify-between gap-5">
+                    <div class="service-meta" id="services-summary" aria-live="polite">Показаны все услуги</div>
+                </div>
+                <div id="service-categories" class="category-chips mt-5" role="tablist" aria-label="Фильтр по категориям"></div>
+            </div>
+
+            <div id="services-grid" class="grid grid-cols-1 gap-8"></div>
+            <div id="services-empty" class="empty-state glass-card rounded-2xl p-10 text-center mt-8" hidden>
+                <i class="fa-solid fa-circle-info text-brand text-2xl mb-4"></i>
+                <p class="text-white text-xl font-medium mb-2">Ничего не найдено</p>
+                <p class="text-gray-400">Выберите другую категорию.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="py-24 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+                <div class="p-10 lg:p-16 lg:w-5/12 flex flex-col justify-center relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand rounded-full filter blur-[80px] opacity-10"></div>
+
+                    <h2 class="text-4xl font-serif mb-10 text-white">Контакты</h2>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-dark-800 flex items-center justify-center border border-gray-700 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-brand"></i>
+                            </div>
+                            <div class="ml-6">
+                                <p class="text-sm text-gray-400 uppercase tracking-wider mb-1">Адрес</p>
+                                <p class="text-lg text-white font-light" data-business-address>ул. Ивана Беличенко, 95, корп. 1, Краснодар</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-dark-800 flex items-center justify-center border border-gray-700 flex-shrink-0">
+                                <i class="fas fa-phone text-brand"></i>
+                            </div>
+                            <div class="ml-6">
+                                <p class="text-sm text-gray-400 uppercase tracking-wider mb-1">Телефон</p>
+                                <a data-business-phone-link href="tel:+79649002011" class="text-xl text-white font-light hover:text-brand transition">
+                                    <span data-business-phone>+7 (964) 900-20-11</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-dark-800 flex items-center justify-center border border-gray-700 flex-shrink-0">
+                                <i class="fas fa-clock text-brand"></i>
+                            </div>
+                            <div class="ml-6">
+                                <p class="text-sm text-gray-400 uppercase tracking-wider mb-1">Режим работы</p>
+                                <p class="text-lg text-white font-light" data-business-hours>Открыто с 10:00 до 22:00</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-dark-800 flex items-center justify-center border border-gray-700 flex-shrink-0">
+                                <i class="fas fa-star text-brand"></i>
+                            </div>
+                            <div class="ml-6">
+                                <p class="text-sm text-gray-400 uppercase tracking-wider mb-1">Рейтинг</p>
+                                <p class="text-lg text-white font-light" data-business-rating>⭐ 5,0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <a data-business-phone-link href="tel:+79649002011" class="w-full text-center bg-brand text-dark-900 py-4 rounded-full font-semibold uppercase tracking-wider text-sm hover:bg-brand-light transition duration-300 glow-btn">
+                            Позвонить
+                        </a>
+                        <a data-business-telegram-link href="https://t.me/ivleva_lazer" target="_blank" rel="noopener" class="w-full text-center bg-dark-800 border border-brand text-white py-4 rounded-full font-semibold uppercase tracking-wider text-sm hover:bg-dark-700 transition duration-300">
+                            Написать
+                        </a>
+                        <a href="https://yandex.ru/maps/?text=ул.%20Ивана%20Беличенко%2C%2095%2C%20корп.%201%2C%20Краснодар" target="_blank" rel="noopener" class="w-full text-center border border-gray-600 text-white py-4 rounded-full font-semibold uppercase tracking-wider text-sm hover:border-brand hover:text-brand transition duration-300">
+                            Маршрут
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-7/12 min-h-[400px] lg:min-h-full">
+                    <iframe title="Карта салона" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://yandex.ru/map-widget/v1/?ll=38.912458%2C45.098003&mode=search&oid=191633108734&ol=biz&z=16" width="100%" height="100%" frameborder="0" allowfullscreen="true" style="position:relative; min-height: 500px; height: 100%; filter: invert(90%) hue-rotate(180deg) contrast(80%);"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 border-t border-gray-800 text-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <h3 class="font-serif text-3xl mb-4 text-white" data-business-name>Идеальное тело</h3>
+            <p class="text-gray-500 text-sm mb-8 font-light tracking-wide" data-business-category>Салон красоты</p>
+            <p class="text-gray-600 text-xs tracking-widest uppercase">© 2026 <span data-business-name>Идеальное тело</span>. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <div class="floating-actions" aria-label="Быстрые действия">
+        <a data-business-phone-link href="tel:+79649002011" class="floating-btn" aria-label="Позвонить">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <a data-business-telegram-link href="https://t.me/ivleva_lazer" target="_blank" rel="noopener" class="floating-btn floating-btn-secondary" aria-label="Написать в Telegram">
+            <i class="fa-brands fa-telegram"></i>
+        </a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
