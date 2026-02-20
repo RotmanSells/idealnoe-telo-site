@@ -63,7 +63,7 @@ body {
 
 section[id],
 header[id] {
-    scroll-margin-top: 164px;
+    scroll-margin-top: 24px;
 }
 
 .skip-link {
@@ -83,20 +83,17 @@ header[id] {
 }
 
 .promo-banner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 60;
+    position: relative;
+    z-index: 20;
     height: var(--promo-height);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-    background: linear-gradient(90deg, #fff8ec 0%, #f6f1ff 50%, #edf5ff 100%);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    background: linear-gradient(95deg, #fff8ec 0%, #fff3de 45%, #fef8ee 100%);
     backdrop-filter: blur(10px);
 }
 
 [data-theme='dark'] .promo-banner {
     border-bottom-color: rgba(197, 168, 128, 0.25);
-    background: linear-gradient(90deg, rgba(40, 30, 20, 0.95) 0%, rgba(26, 24, 35, 0.95) 50%, rgba(22, 30, 40, 0.95) 100%);
+    background: linear-gradient(95deg, rgba(35, 28, 18, 0.98) 0%, rgba(52, 36, 20, 0.95) 45%, rgba(29, 24, 18, 0.98) 100%);
 }
 
 .promo-banner-inner {
@@ -119,9 +116,9 @@ header[id] {
     align-items: center;
     gap: 0.45rem;
     color: #1f2937;
-    font-size: 0.76rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
     font-weight: 600;
 }
 
@@ -134,7 +131,7 @@ header[id] {
 }
 
 .promo-item strong {
-    color: #a38760;
+    color: #9b6b30;
 }
 
 [data-theme='dark'] .promo-item strong {
@@ -150,7 +147,6 @@ header[id] {
 }
 
 .glass-nav {
-    top: var(--promo-height);
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--surface-border);
@@ -438,7 +434,7 @@ header[id] {
     position: fixed;
     right: 16px;
     bottom: 18px;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 0.6rem;
     z-index: 45;
@@ -468,6 +464,7 @@ header[id] {
     color: #111827;
     border-color: #d3a76f;
     animation: themePulse 1.8s ease-in-out infinite;
+    touch-action: manipulation;
 }
 
 .floating-btn-theme:hover {
@@ -475,9 +472,9 @@ header[id] {
 }
 
 [data-theme='dark'] .floating-btn-theme {
-    background: linear-gradient(135deg, #6ab0ff 0%, #4f8df0 100%);
+    background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
     color: #f8fafc;
-    border-color: #6ab0ff;
+    border-color: #38bdf8;
 }
 
 @keyframes themePulse {
@@ -632,5 +629,9 @@ header[id] {
 
     .floating-actions {
         display: flex;
+    }
+
+    .promo-banner-inner {
+        justify-content: flex-start;
     }
 }

@@ -111,6 +111,7 @@
 
     function initThemeToggle() {
         var themeToggles = document.querySelectorAll('[data-theme-toggle]');
+        var themeFab = document.querySelector('[data-theme-fab]');
 
         applyTheme(getCurrentTheme());
 
@@ -120,14 +121,19 @@
             });
         });
 
-        document.addEventListener('click', function (event) {
-            var fab = event.target.closest('[data-theme-fab]');
-            if (!fab) {
-                return;
-            }
-            event.preventDefault();
-            toggleTheme();
-        });
+        if (themeFab) {
+            themeFab.addEventListener('pointerup', function (event) {
+                event.preventDefault();
+                toggleTheme();
+            });
+
+            themeFab.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleTheme();
+                }
+            });
+        }
     }
 
     function escapeHtml(value) {
