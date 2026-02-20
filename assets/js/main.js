@@ -39,6 +39,67 @@
         });
     }
 
+    function getStoredTheme() {
+        try {
+            var saved = localStorage.getItem('site-theme');
+            if (saved === 'light' || saved === 'dark') {
+                return saved;
+            }
+        } catch (error) {
+            return 'light';
+        }
+
+        return 'light';
+    }
+
+    function getCurrentTheme() {
+        var attrTheme = document.documentElement.getAttribute('data-theme');
+        if (attrTheme === 'light' || attrTheme === 'dark') {
+            return attrTheme;
+        }
+        return getStoredTheme();
+    }
+
+    function syncThemeToggles(theme) {
+        document.querySelectorAll('[data-theme-toggle]').forEach(function (toggle) {
+            toggle.checked = theme === 'dark';
+        });
+    }
+
+    function setTheme(theme) {
+        var resolvedTheme = theme === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', resolvedTheme);
+
+        try {
+            localStorage.setItem('site-theme', resolvedTheme);
+        } catch (error) {
+            return;
+        }
+    }
+
+    function applyTheme(theme) {
+        var resolvedTheme = theme === 'dark' ? 'dark' : 'light';
+        setTheme(resolvedTheme);
+        syncThemeToggles(resolvedTheme);
+        updateNavState();
+    }
+
+    function initThemeToggle() {
+        var themeToggles = document.querySelectorAll('[data-theme-toggle]');
+
+        if (!themeToggles.length) {
+            return;
+        }
+
+        applyTheme(getCurrentTheme());
+
+        themeToggles.forEach(function (toggle) {
+            toggle.addEventListener('change', function () {
+                applyTheme(toggle.checked ? 'dark' : 'light');
+            });
+        });
+    }
+
     function escapeHtml(value) {
         return String(value)
             .replace(/&/g, '&amp;')
@@ -272,22 +333,23 @@
         });
     }
 
+    function updateNavState() {
+        var nav = document.querySelector('nav');
+
+        if (!nav) {
+            return;
+        }
+
+        if (window.scrollY > 50) {
+            nav.classList.add('shadow-lg', 'is-scrolled');
+        } else {
+            nav.classList.remove('shadow-lg', 'is-scrolled');
+        }
+    }
+
     function initScrollEffects() {
-        window.addEventListener('scroll', function () {
-            var nav = document.querySelector('nav');
-
-            if (!nav) {
-                return;
-            }
-
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-lg');
-                nav.style.background = 'rgba(10, 10, 10, 0.95)';
-            } else {
-                nav.classList.remove('shadow-lg');
-                nav.style.background = 'rgba(10, 10, 10, 0.8)';
-            }
-        });
+        window.addEventListener('scroll', updateNavState);
+        updateNavState();
     }
 
     function initAnimations() {
@@ -316,6 +378,7 @@
             document.title = business.name + ' | ' + business.category + ' в Краснодаре';
         }
 
+        initThemeToggle();
         initAnimations();
         initScrollEffects();
         initMobileMenu();
