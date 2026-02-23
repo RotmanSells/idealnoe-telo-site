@@ -1,6 +1,7 @@
 (function () {
     var state = {
-        activeCategory: 'all'
+        activeCategory: 'all',
+        activeProcedureIndex: 0
     };
 
     function setTextByDataAttr(attr, value) {
@@ -210,6 +211,82 @@
         renderServices(categories);
     }
 
+    function createProcedureBenefitsHtml(benefits) {
+        return (benefits || [])
+            .map(function (benefit) {
+                return '<li>' + escapeHtml(benefit) + '</li>';
+            })
+            .join('');
+    }
+
+    function createProceduresHtml(procedures) {
+        return procedures
+            .map(function (procedure, index) {
+                var isOpen = state.activeProcedureIndex === index;
+                var panelId = 'procedure-panel-' + index;
+                var benefitsHtml = createProcedureBenefitsHtml(procedure.benefits);
+
+                return '<article class="glass-card procedure-card' + (isOpen ? ' is-open' : '') + '" data-aos="fade-up" data-aos-delay="' + (index * 80) + '">' +
+                    '<button type="button" class="procedure-toggle" data-procedure-index="' + index + '" aria-expanded="' + (isOpen ? 'true' : 'false') + '" aria-controls="' + panelId + '">' +
+                    '<div class="procedure-toggle-main">' +
+                    '<div class="w-12 h-12 rounded-full bg-dark-700 flex items-center justify-center border border-gray-700">' +
+                    '<i class="fa-solid ' + escapeHtml(procedure.icon || 'fa-circle-info') + ' text-brand"></i>' +
+                    '</div>' +
+                    '<div class="procedure-heading">' +
+                    '<p class="procedure-category">' + escapeHtml(procedure.category || 'Процедура') + '</p>' +
+                    '<h3 class="procedure-name">' + escapeHtml(procedure.name) + '</h3>' +
+                    '<p class="procedure-short">' + escapeHtml(procedure.shortDescription || '') + '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '<span class="procedure-chevron" aria-hidden="true">' +
+                    '<i class="fa-solid fa-chevron-down"></i>' +
+                    '</span>' +
+                    '</button>' +
+                    '<div id="' + panelId + '" class="procedure-details"' + (isOpen ? '' : ' hidden') + '>' +
+                    '<p class="procedure-detail-line"><span>Что это:</span> ' + escapeHtml(procedure.purpose || '') + '</p>' +
+                    '<p class="procedure-detail-line"><span>Кому подходит:</span> ' + escapeHtml(procedure.suitableFor || '') + '</p>' +
+                    '<p class="procedure-detail-line"><span>Чем поможет:</span></p>' +
+                    '<ul class="procedure-benefits">' + benefitsHtml + '</ul>' +
+                    '<p class="procedure-note">' + escapeHtml(procedure.notes || '') + '</p>' +
+                    '</div>' +
+                    '</article>';
+            })
+            .join('');
+    }
+
+    function renderProcedures(procedures) {
+        var container = document.getElementById('procedures-grid');
+
+        if (!container) {
+            return;
+        }
+
+        if (!procedures.length) {
+            container.innerHTML = '<div class="glass-card procedure-empty">Описание процедур скоро появится.</div>';
+            return;
+        }
+
+        if (state.activeProcedureIndex !== null && state.activeProcedureIndex >= procedures.length) {
+            state.activeProcedureIndex = 0;
+        }
+
+        container.innerHTML = createProceduresHtml(procedures);
+
+        container.querySelectorAll('[data-procedure-index]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var nextIndex = Number(button.getAttribute('data-procedure-index'));
+
+                if (state.activeProcedureIndex === nextIndex) {
+                    state.activeProcedureIndex = null;
+                } else {
+                    state.activeProcedureIndex = nextIndex;
+                }
+
+                renderProcedures(procedures);
+            });
+        });
+    }
+
     function updateNavState() {
         var nav = document.querySelector('nav');
 
@@ -232,6 +309,7 @@
     function initPage() {
         var business = window.BUSINESS_INFO || {};
         var categories = window.SERVICE_CATEGORIES || [];
+        var procedures = window.PROCEDURES_INFO || [];
 
         setTextByDataAttr('business-name', business.name);
         setTextByDataAttr('business-category', business.category);
@@ -247,6 +325,7 @@
 
         initScrollEffects();
         initServicesFilters(categories);
+        renderProcedures(procedures);
     }
 
     document.addEventListener('DOMContentLoaded', initPage);
