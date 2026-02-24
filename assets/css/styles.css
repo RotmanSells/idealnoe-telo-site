@@ -23,6 +23,10 @@
     --map-filter: invert(90%) hue-rotate(180deg) contrast(80%);
 }
 
+html {
+    scroll-padding-top: 24px;
+}
+
 body {
     background-color: var(--page-bg);
     color: var(--text-main);
@@ -254,6 +258,7 @@ header[id] {
 .service-card {
     border-radius: 1rem;
     padding: 1.6rem;
+    contain: layout paint;
 }
 
 .service-group + .service-group {
@@ -304,6 +309,7 @@ header[id] {
 .procedure-card {
     border-radius: 1rem;
     padding: 1.2rem;
+    contain: layout paint;
 }
 
 .procedure-card.is-open {
@@ -457,7 +463,33 @@ header[id] {
     box-shadow: 0 0 30px rgba(197, 168, 128, 0.6);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .glass-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
 @media (max-width: 768px) {
+    .glass-nav,
+    .glass-card,
+    .services-toolbar {
+        backdrop-filter: none;
+    }
+
     .hero-promo-wrap {
         margin-top: 2rem;
     }
