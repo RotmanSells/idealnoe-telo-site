@@ -450,10 +450,6 @@ header[id] {
     border-color: var(--floating-secondary-border);
 }
 
-.map-embed {
-    filter: var(--map-filter);
-}
-
 .glow-btn {
     box-shadow: 0 0 20px rgba(197, 168, 128, 0.3);
     transition: all 0.3s ease;
