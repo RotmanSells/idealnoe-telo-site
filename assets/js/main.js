@@ -85,6 +85,16 @@
         return String(value || '').trim().toLowerCase();
     }
 
+    function getClosestFromEventTarget(event, selector) {
+        var target = event && event.target;
+
+        if (!target || target.nodeType !== 1 || typeof target.closest !== 'function') {
+            return null;
+        }
+
+        return target.closest(selector);
+    }
+
     function cacheDomElements() {
         dom.nav = document.querySelector('nav');
         dom.servicesGrid = document.getElementById('services-grid');
@@ -258,7 +268,7 @@
     }
 
     function onCategoryClick(event) {
-        var button = event.target.closest('[data-category]');
+        var button = getClosestFromEventTarget(event, '[data-category]');
 
         if (!button || !dom.categoryContainer || !dom.categoryContainer.contains(button)) {
             return;
@@ -379,7 +389,7 @@
     }
 
     function onProcedureClick(event) {
-        var button = event.target.closest('[data-procedure-index]');
+        var button = getClosestFromEventTarget(event, '[data-procedure-index]');
 
         if (!button || !dom.proceduresContainer || !dom.proceduresContainer.contains(button)) {
             return;
@@ -466,7 +476,7 @@
             return;
         }
 
-        var link = event.target.closest('a[href^="#"]');
+        var link = getClosestFromEventTarget(event, 'a[href^="#"]');
 
         if (!link) {
             return;
