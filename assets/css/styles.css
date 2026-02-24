@@ -6,8 +6,6 @@
     --surface-border: rgba(197, 168, 128, 0.1);
     --nav-bg: rgba(10, 10, 10, 0.8);
     --nav-bg-scrolled: rgba(10, 10, 10, 0.95);
-    --hero-overlay-start: rgba(10, 10, 10, 0.9);
-    --hero-overlay-end: rgba(10, 10, 10, 0.52);
     --hero-badge-bg: rgba(17, 17, 17, 0.55);
     --hero-badge-border: rgba(107, 114, 128, 0.9);
     --hero-badge-text: #e5e7eb;
@@ -157,8 +155,10 @@ header[id] {
 }
 
 .hero-bg {
-    background: linear-gradient(to right, var(--hero-overlay-start) 0%, var(--hero-overlay-end) 100%),
-        url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+    background:
+        radial-gradient(120% 160% at 0% 10%, rgba(197, 168, 128, 0.24) 0%, rgba(197, 168, 128, 0) 48%),
+        radial-gradient(120% 160% at 100% 90%, rgba(163, 135, 96, 0.2) 0%, rgba(163, 135, 96, 0) 52%),
+        linear-gradient(120deg, #0a0a0a 6%, #111111 46%, #17120f 100%);
     background-attachment: scroll;
 }
 
